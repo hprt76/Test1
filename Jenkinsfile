@@ -2,8 +2,17 @@ pipeline {
   agent any
   stages {
     stage('Initialize') {
-      steps {
-        echo 'This is a test Pipeline'
+      parallel {
+        stage('Initialize') {
+          steps {
+            echo 'This is a test Pipeline'
+          }
+        }
+        stage('In1') {
+          steps {
+            echo 'In1'
+          }
+        }
       }
     }
     stage('Build ') {
